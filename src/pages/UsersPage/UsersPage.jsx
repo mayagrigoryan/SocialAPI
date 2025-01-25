@@ -1,31 +1,30 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SocialAPI } from '../../api/api';
-import { getUsersAC } from '../../store/reducers/userReducers';
+import { getUsersThunk } from '../../store/reducers/userReducers';
 import './UsersPage.css'
+
+import UserCard from '../../components/UserCard/UserCard';
 
 function UsersPage() {
     const dispatch = useDispatch()
-    const { users } = useSelector((state) => state.usersPage)
+    const { users, isFetching } = useSelector((state) => state.usersPage)
 
     useEffect(() => {
-        SocialAPI.getUsers()
-            .then((res) => {
-                dispatch(getUsersAC(res.data.items))
-            })
+        dispatch(getUsersThunk())
     }, [])
-
-    console.log(users);
 
     return (
         <div className='users_page'>
-            {
-                users.map((user) => {
-                    return <li key={user.id}>
-                        <h2>{user.name}</h2>
-                    </li>
-                })
-            }
+            <div className='users-cards'>
+                {
+                    isFetching
+                    ? <h1>Loading...</h1> 
+                    :
+                    users.map((user) => {
+                        return <UserCard user={user} key={user.id} />
+                    })
+                }
+            </div>
         </div>
     )
 }

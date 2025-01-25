@@ -5,6 +5,13 @@
     align-items: center;
 }
 
+.users-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
 li {
     list-style: none;
 }
