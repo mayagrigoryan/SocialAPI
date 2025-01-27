@@ -1,0 +1,32 @@
+.profile-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.go-back-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.profile-details {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        font-size: 18px;
+        margin: 5px 0;
+    }
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
